@@ -6,11 +6,16 @@ if (Meteor.isClient) {
     _value: null,
 
     get: function () {
+      this._dep.depend();
       return this._value;
     },
 
-    set: function () {
+    set: function (value) {
+      if (EJSON.equals(this._value, value))
+      return;
+
       this._value = value;
+      this._dep.changed();
     }
   };
 
