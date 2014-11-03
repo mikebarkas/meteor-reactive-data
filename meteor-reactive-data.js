@@ -31,14 +31,19 @@ if (Meteor.isClient) {
   });
 
   printSize = function () {
-    var windowHeight = Size.get_height();
+    //var windowHeight = Size.get_height();
     var windowWidth = Size.get_width();
 
-    console.log('Height: ', windowHeight);
-    console.log('Width: ', windowWidth);
+    //console.log('Height: ', windowHeight);
+    //console.log('Width: ', windowWidth);
 
-    if (Breakpoints.desktopMin == windowWidth) {
-      console.log('test');
+    if (windowWidth >= Breakpoints.desktopMin) {
+      console.log('Desktop');
+      $('body').addClass('desktop').removeClass('mobile');
+    }
+    if (windowWidth < Breakpoints.desktopMin) {
+      console.log('Mobile');
+      $('body').removeClass('desktop').addClass('mobile');
     }
 
   };

@@ -1,1 +1,6 @@
-/* CSS declarations go here */
+body.mobile {
+    background: #336699;
+}
+body.desktop {
+    background: #dddddd;
+}
