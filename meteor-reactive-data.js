@@ -1,6 +1,14 @@
 if (Meteor.isClient) {
 
-  Breakpoints = {};
+  Breakpoints = {
+    mobileMin: 100,
+    mobileMax: 420,
+
+    tabletMin: 421,
+    tabletMax: 700,
+
+    desktopMin: 701
+  };
 
   Size = {
     _dep: new Deps.Dependency,
@@ -19,7 +27,6 @@ if (Meteor.isClient) {
   };
 
   $(window).resize(function () {
-
     Size._dep.changed();
   });
 
@@ -29,6 +36,10 @@ if (Meteor.isClient) {
 
     console.log('Height: ', windowHeight);
     console.log('Width: ', windowWidth);
+
+    if (Breakpoints.desktopMin == windowWidth) {
+      console.log('test');
+    }
 
   };
 
