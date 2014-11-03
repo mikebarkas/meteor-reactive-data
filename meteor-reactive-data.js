@@ -1,33 +1,37 @@
 if (Meteor.isClient) {
 
-  Name = {
+  Size = {
     _dep: new Deps.Dependency,
 
-    _value: null,
-
-    get: function () {
+    get_height: function () {
       this._dep.depend();
-      return this._value;
+      height = window.innerHeight;
+      return height;
     },
 
-    set: function (value) {
-      if (EJSON.equals(this._value, value))
-      return;
-
-      this._value = value;
-      this._dep.changed();
+    get_width: function () {
+      this._dep.depend();
+      width = window.innerWidth;
+      return width;
     }
   };
 
-  printName = function () {
-    var name = Name.get();
+  $(window).resize(function () {
 
-    console.log('name:', name);
+    Size._dep.changed();
+  });
+
+  printSize = function () {
+    var windowHeight = Size.get_height();
+    var windowWidth = Size.get_width();
+
+    console.log('Height: ', windowHeight);
+    console.log('Width: ', windowWidth);
 
   };
 
   Deps.autorun(function () {
-    printName();
+    printSize();
   });
 }
 
