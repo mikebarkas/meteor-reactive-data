@@ -1,5 +1,7 @@
 if (Meteor.isClient) {
 
+  Breakpoints = {};
+
   Size = {
     _dep: new Deps.Dependency,
 
