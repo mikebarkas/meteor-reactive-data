@@ -46,6 +46,7 @@ if (Meteor.isClient) {
     //console.log('Height: ', windowHeight);
     //console.log('Width: ', windowWidth);
 
+    // Example breakpoints.
     if (windowWidth >= Breakpoints.desktopMin) {
       console.log('Desktop');
       $('body').addClass('desktop').removeClass('mobile');
@@ -57,6 +58,7 @@ if (Meteor.isClient) {
 
   };
 
+  // Run the bodyClass function with Deps autorun.
   Deps.autorun(function () {
     bodyClass();
   });
