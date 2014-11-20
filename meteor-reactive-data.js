@@ -24,7 +24,7 @@ if (Meteor.isClient) {
       return height;
     },
 
-
+    // Window width.
     get_width: function () {
       this._dep.depend();
       width = window.innerWidth;
@@ -32,11 +32,14 @@ if (Meteor.isClient) {
     }
   };
 
+  // Window callback to computation.
   $(window).resize(function () {
     Size._dep.changed();
   });
 
-  printSize = function () {
+  // Compare window size to breakpoints.
+  // Manipulate body class.
+  bodyClass = function () {
     //var windowHeight = Size.get_height();
     var windowWidth = Size.get_width();
 
@@ -55,7 +58,7 @@ if (Meteor.isClient) {
   };
 
   Deps.autorun(function () {
-    printSize();
+    bodyClass();
   });
 }
 
