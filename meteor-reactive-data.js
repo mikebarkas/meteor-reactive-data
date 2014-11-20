@@ -1,23 +1,29 @@
 if (Meteor.isClient) {
 
+  // Device breakpoints.
   Breakpoints = {
+    // Mobile.
     mobileMin: 100,
     mobileMax: 420,
-
+    // Tablet,
     tabletMin: 421,
     tabletMax: 700,
-
+    // Desktop,
     desktopMin: 701
   };
 
+  // Get window size.
+  // Apply a Deps dependency,
   Size = {
     _dep: new Deps.Dependency,
 
+    // Window height,
     get_height: function () {
       this._dep.depend();
       height = window.innerHeight;
       return height;
     },
+
 
     get_width: function () {
       this._dep.depend();
